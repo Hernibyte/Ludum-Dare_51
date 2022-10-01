@@ -17,6 +17,20 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         movement = new PlayerMovement(rb, playerSpeed);
+        playerInteraction = new PlayerInteraction(transform, usableObject, areaInteractionSize);
+    }
+
+    private void Update()
+    {
+        IUsable usable = playerInteraction.Interact();
+
+        if (usable != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                usable.Action();
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -28,8 +42,16 @@ public class Player : MonoBehaviour
         movement.Move(new Vector3(x, 0, z));
     }
 
-    [SerializeField] private PlayerMovement movement;
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, areaInteractionSize);
+    }
+
     [SerializeField] private float playerSpeed;
+    private PlayerMovement movement;
+    private PlayerInteraction playerInteraction;
+    [SerializeField] private float areaInteractionSize;
+    [SerializeField] private LayerMask usableObject;
     private Rigidbody rb;
 
     #endregion
