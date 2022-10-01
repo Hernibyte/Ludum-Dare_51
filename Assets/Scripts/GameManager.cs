@@ -17,11 +17,14 @@ public class GameManager : MonoBehaviour
         orderWindow = FindObjectOfType<OrderWindow>();
         craftSystem = FindObjectOfType<CraftSystem>();
         ingredientStands = FindObjectsOfType<IngredientStand>();
+        standsManager = FindObjectOfType<StandsManager>();
     }
 
     private void Start()
     {
-        orderWindow.ev_NewOrder.AddListener(craftSystem.SetMaxCount);
+        orderWindow.ev_RestartOrder.AddListener(craftSystem.RestartCount);
+        orderWindow.ev_RestartOrder.AddListener(standsManager.ResetStads);
+        orderWindow.ev_NewOrder.AddListener(standsManager.ReciveFoodType);
         orderWindow.ev_CompleteOrder.AddListener(() =>
         {
             if (craftSystem.CompletedFood())
@@ -34,10 +37,13 @@ public class GameManager : MonoBehaviour
         {
             ingredientStand.getIngredient.AddListener(craftSystem.AddIngredient);
         }
+
+        standsManager.ev_SetMaxIngredientsCount.AddListener(craftSystem.AddMaxCount);
     }
 
     private OrderWindow orderWindow;
     private CraftSystem craftSystem;
+    private StandsManager standsManager;
     private IngredientStand[] ingredientStands;
 
     #endregion

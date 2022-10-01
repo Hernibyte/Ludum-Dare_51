@@ -6,10 +6,15 @@ public class CraftSystem : MonoBehaviour
 {
     #region Public
 
-    public void SetMaxCount(int maxCount)
+    public void RestartCount()
     {
-        ingredientsCount = 0;
-        ingredientsMaxCount = maxCount;
+        ingredientsMaxCount = 0;
+        ingredientsCount = 0; 
+    }
+
+    public void AddMaxCount()
+    {
+        ingredientsMaxCount++;
     }
 
     public void AddIngredient()

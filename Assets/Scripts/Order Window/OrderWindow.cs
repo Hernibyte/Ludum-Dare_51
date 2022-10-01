@@ -12,7 +12,8 @@ public class OrderWindow : MonoBehaviour, IUsable
         ev_CompleteOrder.Invoke();
     }
 
-    public CustomEvents.Event_1i ev_NewOrder = new();
+    public UnityEvent ev_RestartOrder = new();
+    public CustomEvents.Event_1efd ev_NewOrder = new();
     public UnityEvent ev_CompleteOrder = new();
 
     #endregion
@@ -24,8 +25,12 @@ public class OrderWindow : MonoBehaviour, IUsable
         orderTimer += Time.deltaTime;
         if (orderTimer >= timePerOrder)
         {
+            ev_RestartOrder.Invoke();
+
+            int aux = Random.Range(0, 10);
+
             orderTimer = 0;
-            ev_NewOrder.Invoke(Random.Range(1, 3));
+            ev_NewOrder.Invoke((EFood)aux);
         }
     }
 
