@@ -2,6 +2,7 @@ using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public int playerMoney = 0;
     public int playerTolerance = 10;
+
+    public UnityEvent ev_GameOver = new();
 
     #endregion
 
@@ -31,6 +34,12 @@ public class GameManager : MonoBehaviour
             standsManager.ReciveFoodType(food);
             if (!firstGeneration) playerTolerance--;
             else firstGeneration = false;
+
+            if (playerTolerance <= 0)
+            {
+                ev_GameOver.Invoke();
+                Time.timeScale = 0;
+            }
         });
         orderWindow.ev_CompleteOrder.AddListener((int moneyGain) =>
         {
