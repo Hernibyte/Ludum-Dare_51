@@ -9,7 +9,7 @@ public class CraftSystem : MonoBehaviour
     public void RestartCount()
     {
         ingredientsMaxCount = 0;
-        ingredientsCount = 0; 
+        ingredientsCount = 0;
     }
 
     public void AddMaxCount()

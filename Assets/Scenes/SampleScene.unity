@@ -1608,9 +1608,6 @@ MonoBehaviour:
   ev_RestartOrder:
     m_PersistentCalls:
       m_Calls: []
-  ev_CompleteOrder:
-    m_PersistentCalls:
-      m_Calls: []
   timePerOrder: 10
 --- !u!65 &621404652
 BoxCollider:
@@ -1784,6 +1781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40794357c4003ee40be0f150bc682115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMoney: 0
+  playerTolerance: 10
 --- !u!1 &670967465
 GameObject:
   m_ObjectHideFlags: 0
