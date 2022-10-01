@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        movement = new PlayerMovement(rb, playerSpeed);
+        movement = new PlayerMovement(rb, playerSpeed, playerMaxVelocity);
         playerInteraction = new PlayerInteraction(transform, usableObject, areaInteractionSize);
     }
 
@@ -47,8 +47,9 @@ public class Player : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, areaInteractionSize);
     }
 
-    [SerializeField] private float playerSpeed;
     private PlayerMovement movement;
+    [SerializeField] private float playerSpeed;
+    [SerializeField] private float playerMaxVelocity;
     private PlayerInteraction playerInteraction;
     [SerializeField] private float areaInteractionSize;
     [SerializeField] private LayerMask usableObject;

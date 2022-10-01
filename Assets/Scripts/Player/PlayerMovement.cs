@@ -8,10 +8,11 @@ public class PlayerMovement
 {
     #region Constructors
 
-    public PlayerMovement(Rigidbody rigidbody, float speed)
+    public PlayerMovement(Rigidbody rigidbody, float speed, float maxVelocity)
     {
         this.rigidbody = rigidbody;
         this.speed = speed;
+        this.maxVelocity = maxVelocity;
     }
 
     #endregion
@@ -25,6 +26,20 @@ public class PlayerMovement
     public void Move(Vector3 direction)
     {
         rigidbody.AddForce(direction * speed);
+        
+        Vector3 newVel = rigidbody.velocity;
+
+        // clamp
+        if (newVel.x >= maxVelocity) newVel.x = maxVelocity;
+        if (newVel.x <= -maxVelocity) newVel.x = -maxVelocity;
+
+        if (newVel.y >= maxVelocity) newVel.y = maxVelocity;
+        if (newVel.y <= -maxVelocity) newVel.y = -maxVelocity;
+
+        if (newVel.z >= maxVelocity) newVel.z = maxVelocity;
+        if (newVel.z <= -maxVelocity) newVel.z = -maxVelocity;
+
+        rigidbody.velocity = newVel;
     }
 
     #endregion
@@ -33,6 +48,7 @@ public class PlayerMovement
 
     private Rigidbody rigidbody;
     private float speed;
+    private float maxVelocity;
 
     #endregion
 }
