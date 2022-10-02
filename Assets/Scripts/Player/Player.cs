@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
             {
                 usable.Action();
             }
-        }      
+        }
     }
 
     private void FixedUpdate()
@@ -37,6 +37,11 @@ public class Player : MonoBehaviour
         // player movement
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
+
+        if (Input.GetKey(KeyCode.D)) bodyTransform.rotation = Quaternion.Euler(0, 90, 0);
+        else if (Input.GetKey(KeyCode.A)) bodyTransform.rotation = Quaternion.Euler(0, -90, 0);
+        else if (Input.GetKey(KeyCode.W)) bodyTransform.rotation = Quaternion.Euler(0, 0, 0);
+        else if (Input.GetKey(KeyCode.S)) bodyTransform.rotation = Quaternion.Euler(0, 180, 0);
 
         movement.Move(new Vector3(x, 0, z));
     }
@@ -53,6 +58,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float areaInteractionSize;
     [SerializeField] private LayerMask usableObject;
     private Rigidbody rb;
+    [SerializeField] private Transform bodyTransform;
 
     #endregion
 }
