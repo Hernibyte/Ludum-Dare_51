@@ -7,7 +7,6 @@ public class Player : MonoBehaviour
     #region Public
 
 
-
     #endregion
 
     #region Private
@@ -30,7 +29,7 @@ public class Player : MonoBehaviour
             {
                 usable.Action();
             }
-        }
+        }      
     }
 
     private void FixedUpdate()
