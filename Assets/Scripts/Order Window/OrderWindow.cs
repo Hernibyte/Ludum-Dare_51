@@ -58,6 +58,8 @@ public class OrderWindow : MonoBehaviour, IUsable
     public float orderTimer { get; private set; }
     public float timePerOrder = 10;
 
+    public bool gameOver;
+
     public UnityEvent ev_RestartOrder = new();
     public CustomEvents.Event_1efd ev_NewOrder = new();
     public CustomEvents.Event_1i ev_CompleteOrder = new();
@@ -68,10 +70,13 @@ public class OrderWindow : MonoBehaviour, IUsable
 
     private void Update()
     {
-        orderTimer += Time.deltaTime;
-        if (orderTimer >= timePerOrder)
+        if (!gameOver)
         {
-            GenerateNewOrder();
+            orderTimer += Time.deltaTime;
+            if (orderTimer >= timePerOrder)
+            {
+                GenerateNewOrder();
+            }
         }
     }
 

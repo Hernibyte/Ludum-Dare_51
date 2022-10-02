@@ -3,10 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     #region Public
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene("Game");
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
 
     public int playerMoney = 0;
     public int playerTolerance = 10;
@@ -26,6 +37,7 @@ public class GameManager : MonoBehaviour
         craftSystem = FindObjectOfType<CraftSystem>();
         ingredientStands = FindObjectsOfType<IngredientStand>();
         standsManager = FindObjectOfType<StandsManager>();
+        player = FindObjectOfType<Player>();
     }
 
     private void Start()
@@ -41,7 +53,8 @@ public class GameManager : MonoBehaviour
             if (playerTolerance <= 0)
             {
                 ev_GameOver.Invoke();
-                Time.timeScale = 0;
+                player.gameOver = true;
+                orderWindow.gameOver = true;
             }
         });
         orderWindow.ev_CompleteOrder.AddListener((int moneyGain) =>
@@ -65,6 +78,7 @@ public class GameManager : MonoBehaviour
     private CraftSystem craftSystem;
     private StandsManager standsManager;
     private IngredientStand[] ingredientStands;
+    private Player player;
 
     #endregion
 }

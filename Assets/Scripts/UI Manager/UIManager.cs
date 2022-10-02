@@ -19,6 +19,11 @@ public class UIManager : MonoBehaviour
         toleranceImage.transform.localScale = new Vector3(toleranceImage.transform.localScale.x - toleranceRes, 1, 1);
     }
 
+    private void GameOver()
+    {
+        gameOver.SetActive(true);
+    }
+
     private void Awake()
     {
         orderWindow = FindObjectOfType<OrderWindow>();
@@ -26,11 +31,14 @@ public class UIManager : MonoBehaviour
 
         toleranceRes = 1.0f / gameManager.playerTolerance;
         gameManager.ev_ResTolerance.AddListener(ResTolerance);
+        gameManager.ev_GameOver.AddListener(GameOver);
+
     }
 
     private void Update()
     {
         moneyCount.text = gameManager.playerMoney.ToString();
+        txt_GameOverMoney.text = moneyCount.text;
 
         if (gameManager.firstGeneration)
             startGameTimer.text = ((int)(orderWindow.timePerOrder - orderWindow.orderTimer)).ToString();
@@ -50,6 +58,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Image toleranceImage;
     private float toleranceRes;
+
+    [SerializeField] private GameObject gameOver;
+    [SerializeField] private TextMeshProUGUI txt_GameOverMoney;
 
     #endregion
 }

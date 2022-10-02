@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     #region Public
 
+    [HideInInspector] public bool gameOver;
 
     #endregion
 
@@ -21,29 +22,35 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        IUsable usable = playerInteraction.Interact();
-
-        if (usable != null)
+        if (!gameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            IUsable usable = playerInteraction.Interact();
+
+            if (usable != null)
             {
-                usable.Action();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    usable.Action();
+                }
             }
         }
     }
 
     private void FixedUpdate()
     {
-        // player movement
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        if (!gameOver)
+        {
+            // player movement
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.D)) bodyTransform.rotation = Quaternion.Euler(0, 90, 0);
-        else if (Input.GetKey(KeyCode.A)) bodyTransform.rotation = Quaternion.Euler(0, -90, 0);
-        else if (Input.GetKey(KeyCode.W)) bodyTransform.rotation = Quaternion.Euler(0, 0, 0);
-        else if (Input.GetKey(KeyCode.S)) bodyTransform.rotation = Quaternion.Euler(0, 180, 0);
+            if (Input.GetKey(KeyCode.D)) bodyTransform.rotation = Quaternion.Euler(0, 90, 0);
+            else if (Input.GetKey(KeyCode.A)) bodyTransform.rotation = Quaternion.Euler(0, -90, 0);
+            else if (Input.GetKey(KeyCode.W)) bodyTransform.rotation = Quaternion.Euler(0, 0, 0);
+            else if (Input.GetKey(KeyCode.S)) bodyTransform.rotation = Quaternion.Euler(0, 180, 0);
 
-        movement.Move(new Vector3(x, 0, z));
+            movement.Move(new Vector3(x, 0, z));
+        }
     }
 
     private void OnDrawGizmos()
