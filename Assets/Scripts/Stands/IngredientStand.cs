@@ -36,6 +36,11 @@ public class IngredientStand : MonoBehaviour, IUsable
         }
     }
 
+    public bool IsUsable()
+    {
+        return isActivate;
+    }
+
     [HideInInspector]
     public UnityEvent getIngredient = new UnityEvent();
     public bool isActivate;

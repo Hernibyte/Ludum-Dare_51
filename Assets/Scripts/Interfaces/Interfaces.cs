@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IUsable
 {
     public void Action();
+    public bool IsUsable();
 }

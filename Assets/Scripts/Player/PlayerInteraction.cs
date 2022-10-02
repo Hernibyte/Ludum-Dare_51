@@ -32,7 +32,11 @@ public class PlayerInteraction
             IUsable usable;
             if (collider.TryGetComponent<IUsable>(out usable))
             {
-                return usable;
+                if (usable.IsUsable())
+                {
+                    Debug.Log("Get");
+                    return usable;
+                }
             }
         }
 

@@ -44,6 +44,11 @@ public class OrderWindow : MonoBehaviour, IUsable
         }
     }
 
+    public bool IsUsable()
+    {
+        return true;
+    }
+
     public void GenerateNewOrder()
     {
         ev_RestartOrder.Invoke();
