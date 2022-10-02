@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public int playerTolerance = 10;
 
     public UnityEvent ev_GameOver = new();
+    public UnityEvent ev_ResTolerance = new();
+
+    [HideInInspector] public bool firstGeneration = true;
 
     #endregion
 
@@ -32,7 +35,7 @@ public class GameManager : MonoBehaviour
         orderWindow.ev_NewOrder.AddListener((EFood food) =>
         {
             standsManager.ReciveFoodType(food);
-            if (!firstGeneration) playerTolerance--;
+            if (!firstGeneration) { playerTolerance--; ev_ResTolerance.Invoke(); }
             else firstGeneration = false;
 
             if (playerTolerance <= 0)
@@ -62,8 +65,6 @@ public class GameManager : MonoBehaviour
     private CraftSystem craftSystem;
     private StandsManager standsManager;
     private IngredientStand[] ingredientStands;
-
-    private bool firstGeneration = true;
 
     #endregion
 }

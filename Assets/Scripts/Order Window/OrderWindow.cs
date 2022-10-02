@@ -55,6 +55,9 @@ public class OrderWindow : MonoBehaviour, IUsable
         ev_NewOrder.Invoke(foodMoneyGain);
     }
 
+    public float orderTimer { get; private set; }
+    public float timePerOrder = 10;
+
     public UnityEvent ev_RestartOrder = new();
     public CustomEvents.Event_1efd ev_NewOrder = new();
     public CustomEvents.Event_1i ev_CompleteOrder = new();
@@ -73,9 +76,6 @@ public class OrderWindow : MonoBehaviour, IUsable
     }
 
     private EFood foodMoneyGain;
-    private float orderTimer;
-    [SerializeField]
-    private float timePerOrder = 10;
 
     #endregion
 }
