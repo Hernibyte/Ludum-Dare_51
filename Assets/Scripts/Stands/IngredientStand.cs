@@ -53,6 +53,9 @@ public class IngredientStand : MonoBehaviour, IUsable
     private void Update()
     {
         trailEffect.isActive = isActivate;
+
+        if (isActivate) trailEffect.gameObject.SetActive(true);
+        else trailEffect.gameObject.SetActive(false);
     }
 
     [SerializeField] private StandTrailBehaviour trailEffect;
