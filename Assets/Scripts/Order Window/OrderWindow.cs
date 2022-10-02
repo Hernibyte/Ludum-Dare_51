@@ -55,6 +55,17 @@ public class OrderWindow : MonoBehaviour, IUsable
         ev_NewOrder.Invoke(foodMoneyGain);
     }
 
+    public void GenerateOtherOrder()
+    {
+        ev_RestartOrder.Invoke();
+
+        int aux = Random.Range(0, 10);
+        foodMoneyGain = (EFood)aux;
+
+        orderTimer = 0;
+        ev_OtherOrder.Invoke(foodMoneyGain);
+    }
+
     public float orderTimer { get; private set; }
     public float timePerOrder = 10;
 
@@ -62,6 +73,7 @@ public class OrderWindow : MonoBehaviour, IUsable
 
     public UnityEvent ev_RestartOrder = new();
     public CustomEvents.Event_1efd ev_NewOrder = new();
+    public CustomEvents.Event_1efd ev_OtherOrder = new();
     public CustomEvents.Event_1i ev_CompleteOrder = new();
 
     #endregion

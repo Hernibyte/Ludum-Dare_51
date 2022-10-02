@@ -57,12 +57,16 @@ public class GameManager : MonoBehaviour
                 orderWindow.gameOver = true;
             }
         });
+        orderWindow.ev_OtherOrder.AddListener((EFood food) =>
+        {
+            standsManager.ReciveFoodType(food);
+        });
         orderWindow.ev_CompleteOrder.AddListener((int moneyGain) =>
         {
             if (craftSystem.CompletedFood())
             {
                 playerMoney += moneyGain;
-                orderWindow.GenerateNewOrder();
+                orderWindow.GenerateOtherOrder();
             }
         });
 
