@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public enum EIngredientType
 {
@@ -39,6 +40,22 @@ public class IngredientStand : MonoBehaviour, IUsable
     public UnityEvent getIngredient = new UnityEvent();
     public bool isActivate;
     public EIngredientType type;
-    
+
+    #endregion
+
+    #region Private
+
+    private void Awake()
+    {
+        trailEffect = GetComponentInChildren<StandTrailBehaviour>();
+    }
+
+    private void Update()
+    {
+        trailEffect.isActive = isActivate;
+    }
+
+    [SerializeField] private StandTrailBehaviour trailEffect;
+
     #endregion
 }
