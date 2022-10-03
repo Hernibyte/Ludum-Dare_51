@@ -22,10 +22,8 @@ public class FoodPlate : MonoBehaviour
     {
         if (craftSystem.CompletedFood())
         {
-            Debug.Log("Completed");
             if (!foodInstanciated)
             {
-                Debug.Log("spawn comida");
                 Debug.Log(orderWindow.foodMoneyGain);
                 switch (orderWindow.foodMoneyGain)
                 {
@@ -76,7 +74,6 @@ public class FoodPlate : MonoBehaviour
         {
             if (foodInstance != null) Destroy(foodInstance);
             foodInstanciated = false;
-            Debug.Log("No completed");
         }
     }
 

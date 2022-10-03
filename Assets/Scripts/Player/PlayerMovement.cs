@@ -42,6 +42,11 @@ public class PlayerMovement
         rigidbody.velocity = newVel;
     }
 
+    public void Zero()
+    {
+        rigidbody.velocity = Vector3.zero;
+    }
+
     #endregion
 
     #region Private

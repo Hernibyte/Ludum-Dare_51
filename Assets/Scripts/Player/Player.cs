@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     #region Public
 
     [HideInInspector] public bool gameOver;
+    public bool isDown = false;
 
     #endregion
 
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!gameOver)
+        if (!gameOver && !isDown)
         {
             IUsable usable = playerInteraction.Interact();
 
@@ -38,7 +39,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!gameOver)
+        if (!bodyAnimator.GetBool("IsDown")) isDown = false; 
+        if (!gameOver && !isDown)
         {
             // player movement
             float x = Input.GetAxis("Horizontal");
@@ -56,6 +58,18 @@ public class Player : MonoBehaviour
 
 
             movement.Move(new Vector3(x, 0, z));
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IBanana iBanana;
+        if (other.TryGetComponent<IBanana>(out iBanana))
+        {
+            isDown = true;
+            bodyAnimator.SetBool("IsDown", isDown);
+            Destroy(other.gameObject);
+            movement.Zero();
         }
     }
 

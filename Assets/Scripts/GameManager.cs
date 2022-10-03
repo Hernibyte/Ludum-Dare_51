@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         ingredientStands = FindObjectsOfType<IngredientStand>();
         standsManager = FindObjectOfType<StandsManager>();
         player = FindObjectOfType<Player>();
+        bananasManager = FindObjectOfType<BananasManager>();
     }
 
     private void Start()
@@ -46,8 +47,7 @@ public class GameManager : MonoBehaviour
         orderWindow.ev_RestartOrder.AddListener(standsManager.ResetStads);
         orderWindow.ev_NewOrder.AddListener((EFood food) =>
         {
-            Debug.Log(food);
-
+            bananasManager.NewBanana();
             standsManager.ReciveFoodType(food);
             if (!firstGeneration) { playerTolerance--; ev_ResTolerance.Invoke(); }
             else firstGeneration = false;
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         });
         orderWindow.ev_OtherOrder.AddListener((EFood food) =>
         {
+            bananasManager.NewBanana();
             standsManager.ReciveFoodType(food);
         });
         orderWindow.ev_CompleteOrder.AddListener((int moneyGain) =>
@@ -85,6 +86,7 @@ public class GameManager : MonoBehaviour
     private StandsManager standsManager;
     private IngredientStand[] ingredientStands;
     private Player player;
+    private BananasManager bananasManager;
 
     #endregion
 }

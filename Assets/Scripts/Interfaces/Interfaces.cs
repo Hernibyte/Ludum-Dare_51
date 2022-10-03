@@ -7,3 +7,8 @@ public interface IUsable
     public void Action();
     public bool IsUsable();
 }
+
+public interface IBanana
+{
+    
+}
