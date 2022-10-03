@@ -8,6 +8,7 @@ public class OrderWindow : MonoBehaviour, IUsable
     #region Public
 
     public AudioSource order;
+    public AudioSource completeOrderSFX;
     public void Action()
     {
         switch (foodMoneyGain)
@@ -70,6 +71,8 @@ public class OrderWindow : MonoBehaviour, IUsable
 
         orderTimer = 0;
         ev_OtherOrder.Invoke(foodMoneyGain);
+
+        completeOrderSFX.Play();
     }
 
     public float orderTimer { get; private set; }

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Public
+       
 
     public void ResumeGame()
     {
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
     public bool inPause;
 
     public int playerMoney = 0;
-    public int playerTolerance = 10;
+    public int playerTolerance = 10;    
 
     public UnityEvent ev_GameOver = new();
     public UnityEvent ev_ResTolerance = new();
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
             if (craftSystem.CompletedFood())
             {
                 playerMoney += moneyGain;
-                orderWindow.GenerateOtherOrder();
+                orderWindow.GenerateOtherOrder();                
             }
         });
 

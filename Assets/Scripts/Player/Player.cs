@@ -5,11 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region Public
+    public AudioSource bananaSFX;
 
     [HideInInspector] public bool gameOver;
     public bool isDown = false;
     public bool inPause = false;
-
+    
     #endregion
      
 
@@ -67,9 +68,11 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         IBanana iBanana;
         if (other.TryGetComponent<IBanana>(out iBanana))
         {
+            bananaSFX.Play();
             isDown = true;
             bodyAnimator.SetBool("IsDown", isDown);
             Destroy(other.gameObject);
