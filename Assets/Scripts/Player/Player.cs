@@ -49,6 +49,12 @@ public class Player : MonoBehaviour
             else if (Input.GetKey(KeyCode.W)) bodyTransform.rotation = Quaternion.Euler(0, 0, 0);
             else if (Input.GetKey(KeyCode.S)) bodyTransform.rotation = Quaternion.Euler(0, 180, 0);
 
+            if (x != 0 || z != 0) 
+                bodyAnimator.SetBool("IsRunning", true);
+            else
+                bodyAnimator.SetBool("IsRunning", false);
+
+
             movement.Move(new Vector3(x, 0, z));
         }
     }
@@ -66,6 +72,7 @@ public class Player : MonoBehaviour
     [SerializeField] private LayerMask usableObject;
     private Rigidbody rb;
     [SerializeField] private Transform bodyTransform;
+    [SerializeField] private Animator bodyAnimator;
 
     #endregion
 }

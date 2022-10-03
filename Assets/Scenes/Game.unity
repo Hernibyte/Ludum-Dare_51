@@ -28438,6 +28438,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   bodyTransform: {fileID: 2438324}
+  bodyAnimator: {fileID: 27891245}
 --- !u!136 &670967468
 CapsuleCollider:
   m_ObjectHideFlags: 0
