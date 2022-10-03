@@ -75,6 +75,7 @@ public class OrderWindow : MonoBehaviour, IUsable
     public float timePerOrder = 10;
 
     public bool gameOver;
+    public EFood foodMoneyGain;
 
     public UnityEvent ev_RestartOrder = new();
     public CustomEvents.Event_1efd ev_NewOrder = new();
@@ -97,7 +98,6 @@ public class OrderWindow : MonoBehaviour, IUsable
         }
     }
 
-    private EFood foodMoneyGain;
 
     #endregion
 }

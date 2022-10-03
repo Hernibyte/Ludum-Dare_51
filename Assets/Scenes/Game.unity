@@ -21372,6 +21372,37 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &309568104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309568105}
+  m_Layer: 0
+  m_Name: food position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &309568105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309568104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1880917765}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &309985316
 GameObject:
   m_ObjectHideFlags: 0
@@ -27856,6 +27887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timePerOrder: 10
   gameOver: 0
+  foodMoneyGain: 0
   ev_RestartOrder:
     m_PersistentCalls:
       m_Calls: []
@@ -28362,6 +28394,7 @@ GameObject:
   - component: {fileID: 670967468}
   - component: {fileID: 670967469}
   - component: {fileID: 670967467}
+  - component: {fileID: 670967470}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -28435,6 +28468,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &670967470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670967465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7dad418701d4340a7f6fff8b32b5c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodPlateObj: {fileID: 1880917764}
+  foodPosition: {fileID: 309568104}
+  foodItems:
+  - {fileID: 5105063067300854256, guid: ff1ce1ababd23d34586207c35aadd06f, type: 3}
+  - {fileID: 1092917978281730693, guid: 84b3c60f22b649a4796b61b2e4bbf90e, type: 3}
+  - {fileID: 3520770115768592990, guid: 290fc0f48fbd0cb43b3982c0a91a9880, type: 3}
+  - {fileID: 9055892551567829985, guid: 58cf205ff298bd946b22383bb8dd41ca, type: 3}
+  - {fileID: 4845296888398487384, guid: 4001b290eb6608f4cbb897d106dc4165, type: 3}
+  - {fileID: 2324442431535974870, guid: c413ac96eac208e4180def17bb3f9e4d, type: 3}
+  - {fileID: 170116260113522883, guid: fc763c3ba2557e44283ce5156fa7be5d, type: 3}
+  - {fileID: 687196939895837913, guid: 3f2ee410029f77f4ea51fd55ac229056, type: 3}
+  - {fileID: 1881920290434148465, guid: 8d22b4ed171495c43a29576d0d585676, type: 3}
+  - {fileID: 288766541874461031, guid: 680c4521b9361e2409019c0993e557b7, type: 3}
 --- !u!1 &695181412
 GameObject:
   m_ObjectHideFlags: 0
@@ -83528,7 +83586,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 3.36, z: 0.39}
   m_LocalScale: {x: 0.7398296, y: 0.7398296, z: 0.7398296}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 309568105}
   m_Father: {fileID: 2438324}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -84042,6 +84101,17 @@ MonoBehaviour:
   - {fileID: 1876550890}
   - {fileID: 1902088959}
   - {fileID: 79457357}
+  foodRecipes:
+  - {fileID: 86441546}
+  - {fileID: 1162127008}
+  - {fileID: 1607342019}
+  - {fileID: 1594788935}
+  - {fileID: 1142502431}
+  - {fileID: 695518338}
+  - {fileID: 1756007535}
+  - {fileID: 57963976}
+  - {fileID: 501388388}
+  - {fileID: 494766891}
 --- !u!1 &2012000696
 GameObject:
   m_ObjectHideFlags: 0

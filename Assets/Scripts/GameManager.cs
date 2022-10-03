@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
         orderWindow.ev_RestartOrder.AddListener(standsManager.ResetStads);
         orderWindow.ev_NewOrder.AddListener((EFood food) =>
         {
+            Debug.Log(food);
+
             standsManager.ReciveFoodType(food);
             if (!firstGeneration) { playerTolerance--; ev_ResTolerance.Invoke(); }
             else firstGeneration = false;

@@ -72,11 +72,6 @@ public class StandsManager : MonoBehaviour
 
     #region Private
 
-    private void Awake()
-    {
-        foodRecipes = FindObjectsOfType<FoodRecipe>();
-    }
-
     private void ActivateStands(int index)
     {
         foreach (EIngredientType ingredientType in foodRecipes[index].recipe)
@@ -93,7 +88,7 @@ public class StandsManager : MonoBehaviour
     }
 
     [SerializeField] private List<IngredientStand> stands;
-    private FoodRecipe[] foodRecipes; 
+    [SerializeField] private List<FoodRecipe> foodRecipes; 
 
     #endregion
 }
