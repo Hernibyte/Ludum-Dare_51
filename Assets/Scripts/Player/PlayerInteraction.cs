@@ -34,12 +34,10 @@ public class PlayerInteraction
             {
                 if (usable.IsUsable())
                 {
-                    Debug.Log("Get");
                     return usable;
                 }
             }
         }
-
         return null;
     }
 
