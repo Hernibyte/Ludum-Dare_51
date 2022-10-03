@@ -47,6 +47,9 @@ public class UIManager : MonoBehaviour
             if (startGameTimer.IsActive()) startGameTimer.gameObject.SetActive(false);
             gameTimer.text = ((int)(orderWindow.timePerOrder - orderWindow.orderTimer)).ToString();
         }
+
+        if (gameManager.inPause) pauseUI.gameObject.SetActive(true);
+        else pauseUI.gameObject.SetActive(false);
     }
 
     private OrderWindow orderWindow;
@@ -61,6 +64,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOver;
     [SerializeField] private TextMeshProUGUI txt_GameOverMoney;
+
+    [SerializeField] private GameObject pauseUI;
 
     #endregion
 }

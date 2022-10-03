@@ -75,6 +75,7 @@ public class OrderWindow : MonoBehaviour, IUsable
     public float timePerOrder = 10;
 
     public bool gameOver;
+    public bool inPause;
     public EFood foodMoneyGain;
 
     public UnityEvent ev_RestartOrder = new();
@@ -88,7 +89,7 @@ public class OrderWindow : MonoBehaviour, IUsable
 
     private void Update()
     {
-        if (!gameOver)
+        if (!gameOver && !inPause)
         {
             orderTimer += Time.deltaTime;
             if (orderTimer >= timePerOrder)

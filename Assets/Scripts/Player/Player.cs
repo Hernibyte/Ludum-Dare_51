@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public bool gameOver;
     public bool isDown = false;
+    public bool inPause = false;
 
     #endregion
 
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (!gameOver && !isDown)
+        if (!gameOver && !isDown && !inPause)
         {
             IUsable usable = playerInteraction.Interact();
 
@@ -35,12 +36,13 @@ public class Player : MonoBehaviour
                 }
             }
         }
+        if (inPause) movement.Zero();
     }
 
     private void FixedUpdate()
     {
         if (!bodyAnimator.GetBool("IsDown")) isDown = false; 
-        if (!gameOver && !isDown)
+        if (!gameOver && !isDown && !inPause)
         {
             // player movement
             float x = Input.GetAxis("Horizontal");

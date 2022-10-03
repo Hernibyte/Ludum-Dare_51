@@ -9,6 +9,13 @@ public class GameManager : MonoBehaviour
 {
     #region Public
 
+    public void ResumeGame()
+    {
+        inPause = false;
+        player.inPause = inPause;
+        orderWindow.inPause = inPause;
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene("Game");
@@ -18,6 +25,8 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Menu");
     }
+
+    public bool inPause;
 
     public int playerMoney = 0;
     public int playerTolerance = 10;
@@ -79,6 +88,16 @@ public class GameManager : MonoBehaviour
         }
 
         standsManager.ev_SetMaxIngredientsCount.AddListener(craftSystem.AddMaxCount);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            inPause = true;
+            player.inPause = inPause;
+            orderWindow.inPause = inPause;
+        }
     }
 
     private OrderWindow orderWindow;
