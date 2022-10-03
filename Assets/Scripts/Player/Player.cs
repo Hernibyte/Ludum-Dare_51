@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public bool inPause = false;
 
     #endregion
+     
 
     #region Private
 
@@ -32,8 +33,9 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    usable.Action();
+                    usable.Action();      
                 }
+               
             }
         }
         if (inPause) movement.Zero();

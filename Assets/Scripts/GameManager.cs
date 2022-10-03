@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
+    {   
         orderWindow.ev_RestartOrder.AddListener(craftSystem.RestartCount);
         orderWindow.ev_RestartOrder.AddListener(standsManager.ResetStads);
         orderWindow.ev_NewOrder.AddListener((EFood food) =>

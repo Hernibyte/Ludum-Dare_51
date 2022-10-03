@@ -7,6 +7,7 @@ public class OrderWindow : MonoBehaviour, IUsable
 {
     #region Public
 
+    public AudioSource order;
     public void Action()
     {
         switch (foodMoneyGain)
@@ -95,6 +96,7 @@ public class OrderWindow : MonoBehaviour, IUsable
             if (orderTimer >= timePerOrder)
             {
                 GenerateNewOrder();
+                order.Play();
             }
         }
     }
