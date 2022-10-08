@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     #region Public
-       
+
+    public Leaderboard leaderboard;
 
     public void ResumeGame()
     {
@@ -52,7 +53,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {   
+    {
         orderWindow.ev_RestartOrder.AddListener(craftSystem.RestartCount);
         orderWindow.ev_RestartOrder.AddListener(standsManager.ResetStads);
         orderWindow.ev_NewOrder.AddListener((EFood food) =>
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
                 ev_GameOver.Invoke();
                 player.gameOver = true;
                 orderWindow.gameOver = true;
+                StartCoroutine(leaderboard.SubmitScoreRoutine(playerMoney));
+                LostGame();
             }
         });
         orderWindow.ev_OtherOrder.AddListener((EFood food) =>
@@ -99,6 +102,12 @@ public class GameManager : MonoBehaviour
             player.inPause = inPause;
             orderWindow.inPause = inPause;
         }
+    }
+
+    IEnumerator LostGame()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        yield return leaderboard.SubmitScoreRoutine(playerMoney);
     }
 
     private OrderWindow orderWindow;
