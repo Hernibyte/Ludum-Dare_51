@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44100183, g: 0.48973566, b: 0.56982565, a: 1}
+  m_IndirectSpecularColor: {r: 0.44100213, g: 0.48973608, b: 0.5698259, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22588,7 +22588,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 453250772}
-  - component: {fileID: 453250771}
   m_Layer: 0
   m_Name: Leaderboard
   m_TagString: Untagged
@@ -22596,20 +22595,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &453250771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 453250770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2abf7ded4a4c73e4182203ce9088f4fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerNames: {fileID: 309733804}
-  playerScores: {fileID: 266964926}
 --- !u!4 &453250772
 Transform:
   m_ObjectHideFlags: 0
@@ -28891,7 +28876,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40794357c4003ee40be0f150bc682115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderboard: {fileID: 453250771}
   inPause: 0
   playerMoney: 0
   playerTolerance: 10
@@ -52637,7 +52621,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1930304556}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
         m_MethodName: SetPlayerName
         m_Mode: 1
@@ -86349,7 +86333,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1930304557}
-  - component: {fileID: 1930304556}
   m_Layer: 0
   m_Name: Player Manager
   m_TagString: Untagged
@@ -86357,20 +86340,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1930304556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930304555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264cfb5292c9ae24ea3e208af6b8e38e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaderboard: {fileID: 453250771}
-  playerNameField: {fileID: 1287396271}
 --- !u!4 &1930304557
 Transform:
   m_ObjectHideFlags: 0
